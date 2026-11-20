@@ -58,6 +58,10 @@ class PSC_Shortcode {
 			echo '<a class="psc-card" href="' . esc_url( $i['url'] ) . '" target="_blank" rel="noopener">';
 			echo '<span class="psc-badges">';
 			foreach ( $i['badges'] as $b ) {
+				if ( ! empty( $b['icon'] ) ) {
+					echo '<img class="psc-badge-icon" src="' . esc_url( PSC_URL . 'assets/badges/' . $b['icon'] ) . '" alt="' . esc_attr( $b['label'] ) . '" width="72" height="72">';
+					continue;
+				}
 				echo '<span class="psc-badge psc-badge--' . esc_attr( $b['class'] ) . '">' . esc_html( $b['label'] ) . '</span>';
 			}
 			echo '</span>';

@@ -35,7 +35,7 @@ assert( $f( 99 ), 'nicht freigegebene Kategorie muss abgelehnt werden' );
 assert( 2 === count( $items ) );
 assert( 'Mineralwasser' === $items[0]['name'] );
 assert( abs( $items[0]['old_price'] - 11.9 ) < 1e-6 && abs( $items[0]['price'] - 9.52 ) < 1e-6 );
-assert( [ '-20%', 'Neu' ] === array_column( $items[0]['badges'], 'label' ) );
+assert( [ '-20%', 'Neu' ] === array_column( $items[0]['badges'], 'label' ) && 'promo-20.svg' === $items[0]['badges'][0]['icon'] );
 assert( 'https://shop.test/5-home_default/wasser.jpg' === $items[0]['image'] );
 assert( [ 'Angebot' ] === array_column( $items[1]['badges'], 'label' ) && '' === $items[1]['image'] );
 echo "OK\n";

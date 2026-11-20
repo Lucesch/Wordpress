@@ -1,6 +1,6 @@
 # PrestaShop Catalog (WordPress-Plugin)
 
-Zeigt ausgewählte PrestaShop-Kategorien (z. B. Wasser, Bier) auf der Website an – inkl. Störern (Aktion -x %, Angebot, Neu).
+Zeigt ausgewählte PrestaShop-Kategorien (z. B. Wasser, Bier) auf der Website an – inkl. Störern (Aktion-Icons 5–25 %, Text-Badge für andere Rabatte, Angebot, Neu).
 
 ## Einrichtung
 1. PrestaShop: *Erweiterte Parameter → Webservice* aktivieren, Key mit **nur GET** auf `products`, `categories`, `specific_prices` anlegen.

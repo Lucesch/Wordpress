@@ -6,6 +6,8 @@ defined( 'ABSPATH' ) || exit;
  */
 class PSC_Catalog {
 
+	const BADGE_STEPS = [ 5, 10, 15, 20, 25 ];
+
 	private PSC_Api $api;
 	private array $opt;
 
@@ -116,10 +118,18 @@ class PSC_Catalog {
 			$old = $price;
 			if ( 'percentage' === $promo['type'] ) {
 				$price = $old * ( 1 - $promo['reduction'] );
-				$badges[] = [ 'class' => 'promo', 'label' => sprintf( '-%d%%', round( $promo['reduction'] * 100 ) ) ];
 			} else {
 				// Fester Betrag: laut PrestaShop-Standard (reduction_tax=1) inkl. Steuer.
 				$price = max( 0, $old - $promo['reduction'] );
+			}
+			$pct   = $old > 0 ? ( 1 - $price / $old ) * 100 : 0;
+			$step  = (int) round( $pct );
+			// Fertige Störer-Grafiken gibt es nur für 5/10/15/20/25 %; sonst Text-Badge.
+			if ( in_array( $step, self::BADGE_STEPS, true ) && abs( $pct - $step ) < 0.5 ) {
+				$badges[] = [ 'class' => 'promo', 'label' => sprintf( '-%d%%', $step ), 'icon' => 'promo-' . $step . '.svg' ];
+			} elseif ( $pct >= 1 ) {
+				$badges[] = [ 'class' => 'promo', 'label' => sprintf( '-%d%%', round( $pct ) ) ];
+			} else {
 				$badges[] = [ 'class' => 'promo', 'label' => __( 'Aktion', 'ps-catalog' ) ];
 			}
 		} elseif ( (int) ( $p['on_sale'] ?? 0 ) ) {
