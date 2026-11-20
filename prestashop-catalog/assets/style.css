@@ -1,0 +1,15 @@
+.psc-grid{display:grid;grid-template-columns:repeat(var(--psc-cols,4),1fr);gap:1rem}
+@media(max-width:900px){.psc-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.psc-grid{grid-template-columns:1fr}}
+.psc-card{position:relative;display:flex;flex-direction:column;gap:.5rem;padding:1rem;border:1px solid #e3e3e3;border-radius:8px;text-decoration:none;color:inherit;background:#fff}
+.psc-card:hover{box-shadow:0 2px 10px rgba(0,0,0,.1)}
+.psc-card img{width:100%;height:auto;aspect-ratio:1;object-fit:contain}
+.psc-name{font-weight:600}
+.psc-price del{opacity:.55;margin-right:.25rem}
+.psc-price strong{font-size:1.1em}
+.psc-badges{position:absolute;top:.5rem;left:.5rem;display:flex;flex-direction:column;gap:.25rem;z-index:1}
+.psc-badge{padding:.2rem .55rem;border-radius:999px;font-size:.75rem;font-weight:700;color:#fff;background:#555}
+.psc-badge--promo{background:#d62828}
+.psc-badge--sale{background:#e76f00}
+.psc-badge--new{background:#1b7f3b}
+.psc-notice{padding:.5rem .75rem;background:#fff8e5;border-left:4px solid #dba617}
